@@ -3,7 +3,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-Summary of Udacity Git class.
+Summary of Udacity Git class used commands.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ No need to be installed.
 
 ## Usage
 
-This is a informational package.
+This is an informational package.
 
 
 ## Maintainer
