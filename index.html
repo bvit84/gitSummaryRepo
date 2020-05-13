@@ -1,0 +1,469 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    
+<head>
+    <title> Git Summary </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+<h1>
+    <details>
+        <summary>Git Summary</summary>
+        <h6>
+            Version Control System (VCS) or Source Code Manager (SCM): A VCS allows you to:
+            revert files back to a previous state, revert the entire project back to a previous state,
+            review changes made over time, see who last modified something that might be causing
+            a problem, who introduced an issue and when, and more.
+        </h>
+    </details>
+</h1>
+
+<table id = "summary">
+    <colgroup>
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Term</th>
+            <th>Summary</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Git</td>
+            <td>Version control system. Tool to record code work.</td>
+            <td>Git, SVN, Bazaar, etc. </td>
+        </tr>
+        <tr>
+            <td>Commit</td>
+            <td>Snapshot of a mini file system, with a reference.</td>
+            <td>Saves your project's files and any information about them.</td>
+        </tr>
+        <tr>
+            <td>Repository</td>
+            <td>Directory which contains your project work.</td>
+            <td>
+                Repositories can exist either locally on your computer or as a remote 
+                copy on another computer.
+                A repository is made up of commits.
+            </td>
+        </tr>
+        <tr>
+            <td>Working Directory</td>
+            <td>"Visible / Workable" directory on computer.</td>
+            <td>
+                This is in contrast to the files that have been saved (in commits!) in 
+                the repository.
+            </td>
+        </tr>
+        <tr>
+            <td>Checkout</td>
+            <td>
+                The process when content in the repository has been copied 
+                to the Working Directory.
+            </td>
+            <td>
+                <img src="media\gitDirectory.jpg" alt="Git Directory">
+            </td>
+        </tr>
+        <tr>
+            <td>Staging Area</td>
+            <td>
+                A file in the Git directory that stores information about what will go 
+                into your next commit.
+            </td>
+            <td>
+                Prep table, where Git will take the next commit. 
+                Files on the Staging Index are poised to be added to the repository.
+            </td>
+        </tr>
+        <tr>
+            <td>SHA</td>
+            <td>
+                Secure Hash Algorithm. ID number for each commit.
+            </td>
+            <td>
+                It is a 40-character string composed of characters (0–9 and a–f) and 
+                calculated based on the contents of a file or directory structure in Git. 
+                e2adf8ae3e2e4ed40add75cc44cf9d0a869afeb6.
+            </td>
+        </tr>
+        <tr>
+            <td>Branch</td>
+            <td>
+                Alternative line that diverges from the main line of development.
+            </td>
+            <td>
+                The key thing that makes branches incredibly powerful is that you can make 
+                save points on one branch, and then switch to a different branch and make 
+                save points there, too.
+            </td>
+        </tr>
+        <tr>
+            <td>First Time Git Configuration</td>
+            <td>
+                Before you can start using Git, you need to configure it. 
+                Run each of the following lines on the command line to make sure everything is set up.
+            </td>
+            <td>
+                git config --global user.name "Your-Full-Name" (sets up Git with your name)<br>
+                git config --global user.email "your-email-address" (sets up Git with your email)<br>
+                git config --global color.ui auto (makes sure that Git output is colored)<br>
+                git config --global merge.conflictstyle diff3 (displays the original state in a conflict)<br>
+                git config --list
+            </td>
+        </tr>
+        <tr>
+            <td>Git & Code Editor</td>
+            <td>Get Git working with your code editor</td>
+            <td>
+                Atom Editor Setup (git config --global core.editor "atom --wait")<br>
+                Sublime Text Setup (git config --global core.editor "'C:/Program Files/Sublime Text 2/sublime_text.exe' -n -w")<br>
+                VSCode Setup (git config --global core.editor "code --wait")
+            </td>
+        </tr>
+        <tr>
+            <td>$ git init</td>
+            <td>
+                "Initialize" setup of a repository<br>
+                Running the git init command sets up all of the necessary files and 
+                directories that Git will use to keep track of everything. 
+                All of these files are stored in a directory called .git 
+                (notice the . at the beginning - that means it'll be a hidden directory 
+                on Mac/Linux). This .git directory is the "repo"! 
+                This is where git records all of the commits and keeps track of everything!
+            </td>
+            <td>
+                <a href="https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain">
+                Git internals</a><br>
+                <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">
+                Customizing Git - Git Hooks</a><br>
+                Running the git init command sets up all of the necessary files and 
+                directories that Git will use to keep track of everything. All of these 
+                files are stored in a directory called .git (notice the . at the beginning 
+                - that means it'll be a hidden directory on Mac/Linux). This .git directory 
+                is the "repo"! This is where git records all of the commits and keeps track 
+                of everything!<br>
+                <a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-
+                Repository#Initializing-a-Repository-in-an-Existing-Directory">
+                Initializing a Repository in an Existing Directory</a><br>
+                <a href="https://git-scm.com/docs/git-init">
+                git init docs</a><br>
+                <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository">
+                git init Tutorial</a>
+            </td>
+            <tr>
+                <td>$ git clone 'path-to-repository-to-clone'</td>
+                <td>
+                    Clone a repository, it creates a new directory for the repository, by 
+                    default will create a directory with the same name as the repository 
+                    that's being cloned. But, it doesn't change your shell's working 
+                    directory. It created the new repo inside the current working directory, 
+                    which means that the current working directory is still outside of this 
+                    new Git repo! Make sure you cd into the new repository. Can be given a 
+                    second argument that will be used as the name of the directory.
+                </td>
+                <td>
+                    <a href="https://git-scm.com/book/en/v2/
+                    Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository">
+                    Cloning an Existing Repository</a><br>
+                    <a href="https://git-scm.com/docs/git-clone">
+                    git clone docs</a>
+                </td>
+            </tr>
+            <tr>
+                <td>$ git status</td>
+                <td>
+                    The git status is our key to the mind of Git. It will tell us what Git 
+                    is thinking and the state of our repository as Git sees it. When you're 
+                    first starting out, you should be using the git status command all of 
+                    the time! You should get into the habit of running it after any other 
+                    command. This will help you learn how Git works and it'll help you 
+                    from making (possibly) incorrect assumptions about the state of your 
+                    files/repository.
+                </td>
+                <td>
+                    <img src="media\gitLifeCycle.png" alt="Git Life Cycle example">
+                    The git status command will display a lot of information depending on 
+                    the state of your files, the working directory, and the repository.<br>
+                    This command will: tell us about new files that have been created in 
+                    the Working Directory that Git hasn't started tracking, yet; files 
+                    that Git is tracking that have been modified; a whole bunch of other 
+                    things ;-)<br>
+                    <a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes
+                    -to-the-Repository#Checking-the-Status-of-Your-Files">
+                    Checking the Status of Your Files</a><br>
+                    <a href="https://git-scm.com/docs/git-status">
+                    git status docs</a><br>
+                    <a href="https://www.atlassian.com/git/tutorials/inspecting-a-
+                    repository/git-status">
+                    git status Tutorial</a>
+                </td>
+            </tr>
+            <tr>
+                <td>$ git log</td>
+                <td>
+                    By default, this command displays: the SHA, the author, 
+                    the date, and the message ... of every commit in the 
+                    repository:<br>
+                    <ls>
+                        <li>
+                            the SHA - git log will display the complete SHA 
+                            for every single commit. Each SHA is unique, so 
+                            we don't really need to see the entire SHA. We 
+                            could get by perfectly fine with knowing just 
+                            the first 6-8 characters.
+                        </li>
+                        <li>
+                            the author - the git log output displays the 
+                            commit author for every single commit! It could 
+                            be different for other repositories that have 
+                            multiple people collaborating together, but for 
+                            this one, there's only one person making all of 
+                            the commits, so the commit author will be 
+                            identical for all of them.
+                        </li>
+                        <li>
+                            the date - By default, git log will display the 
+                            date for each commit. 
+                        </li>
+                        <li>
+                            the commit message - this is one of the most 
+                            important parts of a commit message.
+                        </li>
+                    </ls>
+                </td>
+                <td>
+                    $ git log --oneline (oneline flag is used to alter how git log 
+                    displays information): lists one commit per line, shows the first 
+                    7 characters of the commit's SHA, shows the commit's message.<br>
+                    $ git log --stat (used to display the files that have been changed 
+                    in the commit, as well as the number of lines that have been added 
+                    or deleted. "stat" is short for "statistics"): displays the file(s) 
+                    that have been modified; displays the number of lines that have 
+                    been added/removed; displays a summary line with the total number 
+                    of modified files and lines that have been added/removed.<br>
+                    $ git log -p (can be used to display the actual changes made to a 
+                    file. The flag is --patch which can be shortened to just -p): 
+                    displays the files that have been modified; displays the location 
+                    of the lines that have been added/removed; displays the actual 
+                    changes that have been made. <a href="https://git-scm.com/docs/
+                    git-diff#_generating_patches_with_p">Generating patches with -p 
+                    from the Git docs</a>.<br>
+                    $ git log --oneline --decorate --graph --all (Running this command 
+                    will show all branches and commits in the repository)
+                </td>
+            </tr>
+            <tr>
+                <td>$ git show</td>
+                <td>
+                    Will show only one commit. The output of the git show command is exactly 
+                    the same as the git log -p command. However, git show can be 
+                    combined with most of the other flags we've looked at:<br>
+                    * --stat - to show the how many files were changed and the number 
+                    of lines that were added/removed;<br>
+                    * -p or --patch - this the default, but if --stat is used, the patch 
+                    won't display, so pass -p to add it again<br>
+                    * -w - to ignore changes to whitespace.
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>$ git add</td>
+                <td>
+                    Move files from the Working Directory to the Staging Index:<br>
+                    * takes a space-separated list of file names;<br>
+                    * alternatively, the period . can be used in place of a list of 
+                    files to tell Git to add the current directory (and all nested files).
+                </td>
+                <td>
+                    $ git add file1 file2 … fileN
+                </td>
+            </tr>
+            <tr>
+                <td>$ git commit</td>
+                <td>
+                    Running this command will open the code editor to input commit comment/description.    
+                </td>
+                <td>
+                    $ git commit -m "commit comment" (bypass The editor).<br>
+                    git commit --amend (undo the most recent commit or to 
+                    change the wording of the commit message)<br>
+                    <a href="https://udacity.github.io/git-styleguide/">
+                    Git Commit Message Style Guide</a>
+                </td>
+            </tr>
+            <tr>
+                <td>$ git diff</td>
+                <td>
+                    Used to see changes that have been made but haven't been 
+                    committed, yet. This command displays:<br>
+                    * the files that have been modified<br>
+                    * the location of the lines that have been added/removed<br>
+                    * the actual changes that have been made.
+                </td>
+                <td>
+                    <a href="https://git-scm.com/docs/git-diff">
+                    $ git diff</a>
+                </td>
+            </tr>
+            <tr>
+                <td>.gitignore</td>
+                <td>
+                    The .gitignore file is used to tell Git about the files that Git 
+                    should not track. This file should be placed in the same directory 
+                    that the .git directory is in.
+                </td>
+                <td>
+                    <a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-
+                    Changes-to-the-Repository#Ignoring-Files">
+                    Ignoring files</a>
+                </td>
+            </tr>
+            <tr>
+                <td>$ git tag</td>
+                <td>
+                    Used to add a marker on a specific commit. The tag does not move 
+                    around as new commits are added. This command will:<br>
+                    * add a tag to the most recent commit<br>
+                    * add a tag to a specific commit if a SHA is passed
+                </td>
+                <td>
+                    $ git tag -a beta a87584
+                    <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">
+                    Git Basics - Tagging</a><br>
+                    $ git log --decorate (will show us some details that are 
+                    hidden from the default view.)<br>
+                    $ git tag -d v1.0 (delete tag)
+                </td>
+            </tr>
+            <tr>
+                <td>$ git branch</td>
+                <td>
+                    Used to interact with Git's branches:<br>
+                    * list all branch names in the repository<br>
+                    * create new branches<br>
+                    * delete branches
+                </td>
+                <td>
+                    $ git branch sidebar (create new branch "sidebar");<br>
+                    $ git checkout sidebar (switch to sidebar branch)<br>
+                    $ git branch -d sidebar (delete branch, -D force delete)
+                </td>
+            </tr>
+            <tr>
+                <td>$ git merge</td>
+                <td>
+                    Used to combine Git branches:<br>
+                    * look at the branches that it's going to merge<br>
+                    * look back along the branch's history to find a single commit 
+                    that both branches have in their commit history<br>
+                    * combine the lines of code that were changed on the separate 
+                    branches together<br>
+                    * makes a commit to record the merge
+                </td>
+                <td>
+                    $ git merge 'name-of-branch-to-merge-in'
+                </td>
+            </tr>
+            <tr>
+                <td>$ git revert</td>
+                <td>
+                    Used to reverse a previously made commit:<br>
+                    * will undo the changes that were made by the provided commit<br>
+                    * creates a new commit to record the change.
+                </td>
+                <td>
+                    $ git revert 'SHA-of-commit-to-revert'
+                </td>
+            </tr>
+            <tr>
+                <td>$ git reset</td>
+                <td>
+                    Used to reset (erase) commits:<br>
+                    * move the HEAD and current branch pointer to the referenced commit<br>
+                    * erase commits with --hard flag<br>
+                    * move committed changes to the staging index with --soft flag<br>
+                    * unstage committed changes with --mixed flag<br>
+                    Typically, ancestry references are used to indicate previous commits. 
+                    The ancestry references are:<br>
+                    ^ – indicates the parent commit<br>
+                    ~ – indicates the first parent commit
+                </td>
+                <td>
+                    $ git reset 'reference-to-commit'
+                </td>
+            </tr>
+            <tr>
+                <td>$ git remote</td>
+                <td>
+                    Used to manage a remote repository.
+                </td>
+                <td>
+                    $ git remote add 'remoterepoLink' (used to add a connection to a new 
+                    remote repository)<br>
+                    $ git remote -v (used to see the details about a connection to a remote)<br>
+                    $ git remote rename origin mine(renames origin to mine)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    $ git push 'remote-shortname' 'branch'<br>
+                    $ git pull 'remote-shortname' 'branch'
+                </td>
+                <td>
+                    Used to send commits from a local repository to a remote repository.<br>
+                    When git pull is run, the following things happen:<br>
+                    * the commit(s) on the remote branch are copied to the 
+                    local repository<br>
+                    * the local tracking branch (origin/master) is moved to point 
+                    to the most recent commit<br>
+                    * the local tracking branch (origin/master) is merged into the 
+                    local branch (master).
+                </td>
+                <td>
+                    $ git push origin master<br>
+                    $ git pull origin master
+                </td>
+            </tr>
+            <tr>
+                <td>$ git fetch</td>
+                <td>
+                    Used to retrieve commits from a remote repository's branch but 
+                    it does not automatically merge the local branch with the remote 
+                    tracking branch after those commits have been received.<br>
+                    One main point when you want to use git fetch rather than git pull 
+                    is if your remote branch and your local branch both have changes 
+                    that neither of the other ones has. In this case, you want to fetch 
+                    the remote changes to get them in your local branch and then 
+                    perform a merge manually. Then you can push that new merge commit 
+                    back to the remote.
+                </td>
+                <td>
+                    $ git fetch origin master    
+                </td>
+            </tr>
+            <tr>
+                <td>$ git rebase</td>
+                <td>
+                    Used to squash commits together. Backup repo is a must before "rebasing".
+                </td>
+                <td>
+                    $ git rebase -i HEAD~3<br>
+                    <img src="media\gitHead.jpg" alt="Git Head example">
+                </td>
+            </tr>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Last updated: 5/2020</td>
+        </tr>
+    </tfoot>
+</table>
+</body>
+</html>
